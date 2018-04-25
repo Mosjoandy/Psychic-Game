@@ -12,6 +12,8 @@ document.onkeyup = function(humanGuess) {
     humanInput = humanGuess.key;
     console.log("You pressed: " + humanInput);  
  
+    if (humanAttempts.indexOf(humanInput) === -1) {
+        
 
         if (humanInput != cpuGuess) {
             guessTotal = (guessTotal-1);
@@ -20,7 +22,6 @@ document.onkeyup = function(humanGuess) {
             humanAttempts.push(humanInput);
             document.getElementById("humanGuesses").innerHTML = (humanAttempts);
 
-            
             if (guessTotal === 0) {
                 lossTotal = (lossTotal+1);
                 console.log("increasetheloss");
@@ -30,10 +31,7 @@ document.onkeyup = function(humanGuess) {
                 humanAttempts = [];
                 document.getElementById("humanGuesses").innerHTML = humanAttempts;
             }
-
-            
         }
-
         else if (humanInput === cpuGuess) {
             winTotal = (winTotal+1);
             console.log("increasethewin");
@@ -46,7 +44,12 @@ document.onkeyup = function(humanGuess) {
             cpuGuess = cpuRandom[Math.floor(Math.random() * cpuRandom.length)];
             console.log("Computer pressed: " + cpuGuess);
         }
+
+    
+    }
 }
+
+
 
 
 
